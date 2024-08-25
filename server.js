@@ -1,11 +1,12 @@
-import app from "./app.js"
+
 import { connectDB } from "./config/database.js"
 import cloudinary from "cloudinary"
-// import RazorPay from "razorpay"
+
 import nodeCron from "node-cron"
 import { Stats } from "./models/Stats.js"
 
 import { createRequire } from "module";
+import app from "./api/index.js";
 const require = createRequire(import.meta.url)
 
 //Accessing .env variable using Dotenv
@@ -24,10 +25,6 @@ cloudinary.v2.config({
 })
 
 
-/*export const instance = new RazorPay({
-    key_id: process.env.RAZORPAY_API_KEY,
-    key_secret: process.env.RAZORPAY_API_SECRET,
-});*/
 
 //1st day of every month
 nodeCron.schedule("0 0 0 1 * *", async () => {
