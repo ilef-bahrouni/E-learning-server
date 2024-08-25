@@ -9,7 +9,7 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
     })
 }
 import express from "express"
-import ErrorMiddleware from "./middlewares/Error.js"
+import ErrorMiddleware from "../middlewares/Error.js"
 import cookieParser from "cookie-parser"
 import cors from "cors"
 
@@ -35,10 +35,10 @@ app.use(
 
 
 
-import course from "./routes/courseRoutes.js"
-import user from "./routes/userRoutes.js"
-import stripe from "./routes/stripe.js"
-import other from "./routes/otherRoutes.js"
+import course from "../routes/courseRoutes.js"
+import user from "../routes/userRoutes.js"
+import stripe from "../routes/stripe.js"
+import other from "../routes/otherRoutes.js"
 
 app.use("/api/v1", course)
 app.use("/api/v1", user)
