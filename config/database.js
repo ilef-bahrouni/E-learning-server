@@ -5,7 +5,7 @@ export const connectDB = async () => {
     // console.log(`MongoDB Connected with ${connection.host} `)
      const uri ='mongodb+srv://ilefbahrouni2002:7E26JfLrfKodTAWQ@cluster0.cpdxn.mongodb.net/test?retryWrites=true&w=majority'
      mongoose.set('strictQuery', true);
-    mongoose.connect(uri  
+    mongoose.connect(process.env.MONGO_URI
     // mongoose.connect('mongodb://127.0.0.1:27017/e-learning'
         , {
             useNewUrlParser: true,
