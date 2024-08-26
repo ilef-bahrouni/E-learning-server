@@ -110,7 +110,7 @@ router.post("/create-checkout-session", async (req, res) => {
     customer: customer.id,
     // success_url: `http://localhost:3000/paymentsuccess`,
     success_url: `${process.env.FRONTEND_URL}/paymentsuccess?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `http://localhost:3000/subscribe`,
+    cancel_url: `${process.env.FRONTEND_URL}/subscribe`,
   });
 
  // Créer l'abonnement  for this user  

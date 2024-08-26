@@ -71,33 +71,34 @@ export const getCourseLectures = catchAsyncError(async (req, res, next) => {
 // // Max video size 100mb
 export const addLecture = catchAsyncError(async (req, res, next) => {
     const { id } = req.params;
+    // console.log ('  startted add lecteure ..')
     const { title, description } = req.body;
 
     const course = await Course.findById(id);
-
+    // console.log ('  cours  ..' , course) 
     if (!course) return next(new ErrorHandler("Course not found", 404));
 
-    const file = req.file;
+    /*const file = req.file;
     const fileUri = getDataUri(file);
 
     const mycloud = await cloudinary.v2.uploader.upload(fileUri.content, {
         resource_type: "video",
         folder: "elearning"
-    });
-
+    });*/ 
+     
     course.lectures.push({
         title,
         description,
         video: {
-            public_id: mycloud.public_id,
-            url: mycloud.secure_url,
+            public_id:" mycloud.public_id",
+            url:'https://www.youtube.com/watch?v=98BzS5Oz5E4&list=PL4cUxeGkcC9iJ_KkrkBZWZRHVwnzLIoUE' //mycloud.secure_url,
         },
     });
 
     course.numOfVideos = course.lectures.length;
 
     await course.save();
-
+// console.log ('  cours aprés add lecteur ' , course)
     res.status(200).json({
         success: true,
         message: "Lecture added in Course",
