@@ -25,13 +25,18 @@ app.use(
 );
 app.use(cookieParser());
 // app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3000', // Remplacez par l'URL de votre frontend
+    credentials: true,
+}));
+/*
 app.use(
     cors({
         origin: process.env.FRONTEND_URL,
         credentials: true,
         methods: ["GET", "POST", "PUT", "DELETE"],
     })
-);
+);*/
 
 
 
