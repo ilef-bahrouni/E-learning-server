@@ -12,7 +12,7 @@ import { Stats } from "../models/Stats.js";
 export const register = catchAsyncError(async (req, res, next) => {
     const { name, email, password } = req.body;
     const file = req.file;
-
+console.log (' register started ')
     if (!name || !email || !password || !file)
         return next(new ErrorHandler("Please enter all field", 400));
 
@@ -22,7 +22,7 @@ export const register = catchAsyncError(async (req, res, next) => {
 
     const fileUri = getDataUri(file);
     const mycloud = await cloudinary.v2.uploader.upload(fileUri.content, { folder: "elearning" });
-
+console.log ('file url in register ' , fileUri)
     user = await User.create({
         name,
         email,
